@@ -1,0 +1,30 @@
+{
+  "name": "@bob/template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "publish/aibrowser/sdk/index.js",
+  "scripts": {
+    "start": "concurrently \"npm:build:*\"",
+    "build:demo": "webpack --config ./configs/webpack.demo.config.js --watch",
+    "build:test": "webpack --config ./configs/webpack.test.config.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/node": "^12.0.2",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^2.0.2",
+    "concurrently": "^4.1.0",
+    "expose-loader": "^0.7.5",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {}
+}
