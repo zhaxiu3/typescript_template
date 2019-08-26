@@ -60,5 +60,6 @@ module.exports = {
             cleanOnceBeforeBuildPatterns: ["!/assets/*"], // 防止清空assets/下的文件
             cleanAfterEveryBuildPatterns: ["!/assets/*", "main.*js"]  // 防止清空assets/下的文件
         })
-    ]
+    ],
+    target: "node"
 };
