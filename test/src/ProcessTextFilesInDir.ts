@@ -14,10 +14,20 @@ export class ProcessTextFilesInDir {
             });
         });
     }
-    public Process(dirPath: string, callback: (filePath: string, text: string) => Promise<any>): Promise<any> {
+
+    /**
+     * 获取目录下符合filter规则的文件并处理
+     * @param dirPath 目录地址
+     * @param callback 处理函数
+     * @param filter 筛选函数
+     */
+    public Process(dirPath: string, callback: (filePath: string, text: string) => Promise<any>, filter?: (filePath: string) => boolean): Promise<any> {
         const promiseArr: Array<Promise<any>> = [];
         this.getFiles(dirPath).then((files) => {
             files.forEach((filePath) => {
+                if (filter === undefined || filter(filePath) === false) {
+                    return;
+                }
                 fs.readFile(filePath, { encoding: "utf-8" }, (err, data) => {
                     const text = data.toString();
                     promiseArr.push(callback(filePath, text));

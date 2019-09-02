@@ -30,7 +30,7 @@ function getEnumStructure(text: string): string[] {
  * 获取所有的赋值表达式
  * @param text 原始字符串
  */
-function getExpressions(text: string): string[] {
+function getAssignmentStatements(text: string): string[] {
     const matches = text.match(CommonRegExp.assignmentStatement);
     return matches || [];
 }
@@ -75,7 +75,7 @@ function getRightValue(assignment: string): string {
  */
 function getVariablesFromExpression(text: string, context: Map<string, number>): Map<string, number> {
     const variables: Map<string, number> = new Map();
-    const expressions = getExpressions(text); // 获取赋值表达式
+    const expressions = getAssignmentStatements(text); // 获取赋值表达式
     for (let i = 0; i < expressions.length; ++i) {
         const assign = expressions[i];
         const left = getLeftValue(assign); // 获取等号左边的字符串
@@ -130,7 +130,7 @@ export function evaluateExpression(text: string): IEnumStructure[] {
     const enums = getEnumStructure(newText);
     enums.forEach((item) => {
         const enumName = getEnumName(item);
-        const expressions = getExpressions(item); // 获取赋值表达式
+        const expressions = getAssignmentStatements(item); // 获取赋值表达式
         const vars = getVariablesFromExpression(item, context);
         enumStructures.push({
             name: enumName,

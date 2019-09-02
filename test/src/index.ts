@@ -1,4 +1,4 @@
-import { removeComments, evaluateExpression } from "./utils";
+import { evaluateExpression } from "./utils";
 import { ProcessTextFilesInDir } from "./ProcessTextFilesInDir";
 
 const tsDefsRoot = "./defs/";
